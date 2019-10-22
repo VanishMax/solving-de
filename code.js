@@ -7,8 +7,16 @@ const changeGrid = e => {
   gridNum = e.target.value;
 };
 
+let x0 = 1;
+let y0 = 1;
+const changeInitial = (e, name) => {
+  if (name === 'x') x0 = e.target.value;
+  if (name === 'y') y0 = e.target.value;
+};
+
 let chart = new Chart(canvas, {
   type: 'line',
+  label: 'Solution',
   data: {
     datasets: [{
       label: 'Euler',

@@ -6,9 +6,28 @@ canvas {
     -ms-user-select: none;
 }
 
-.grid-range {
-    display: flex;
-    align-items: center;
+code {
+  display: block;
+}
+
+.mb {
+  margin-bottom: 1em;
+}
+
+.w-2 {
+  width: 2em;
+}
+
+.flex {
+  display: flex;
+  align-items: center;
+}
+
+.flex-between {
+  justify-content: space-between;
+}
+
+.flex-center {
     justify-content: center;
 }
 

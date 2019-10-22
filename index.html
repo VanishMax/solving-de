@@ -9,14 +9,28 @@
     <script src="https://cdn.jsdelivr.net/npm/chart.js@2.8.0/dist/Chart.bundle.min.js"></script>
 </head>
 <body>
-  <div class="grid-range">
-      <label for="grid">Grid number</label>
-      <input onchange="changeGrid(event)" type="range" id="grid" value="500" min="0" max="1000">
-      <input onchange="changeGrid(event)" type="number" id="grid-num" value="500" min="0" max="1000">
-  </div>
-  <canvas id="canvas"></canvas>
+    <h1>Solving Differential Equations</h1>
+    <code class="mb">
+        Solve IVP: <b>(2x+1)y/x−y<sup>2</sup>/x − x</b> with y<sub>0</sub>=1, x<sub>0</sub>=1, X=10
+    </code>
 
-  <script type="text/javascript" src="config.js"></script>
-  <script type="text/javascript" src="code.js"></script>
+    <div class="flex flex-between">
+        <div class="flex-center flex">
+            <label for="x0">x<sub>0</sub> = </label>
+            <input oninput="changeInitial(event, 'x')" type="number" id="x0" value="1" class="w-2">
+            <label for="y0">y<sub>0</sub> = </label>
+            <input oninput="changeInitial(event, 'y')" type="number" id="y0" value="1" class="w-2">
+        </div>
+        <div class="flex-center flex">
+            <label for="grid">Grid number</label>
+            <input oninput="changeGrid(event)" type="range" id="grid" value="500" min="0" max="1000">
+            <input oninput="changeGrid(event)" type="number" id="grid-num" value="500" min="0" max="1000">
+        </div>
+    </div>
+
+    <canvas id="canvas"></canvas>
+
+    <script type="text/javascript" src="config.js"></script>
+    <script type="text/javascript" src="code.js"></script>
 </body>
 </html>

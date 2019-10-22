@@ -12,7 +12,7 @@ const datasetConfig = (color) => ({
 const options = {
   responsive: true,
   title: {
-    display: true,
+    display: false,
     text: ''
   },
   tooltips: {

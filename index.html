@@ -9,6 +9,11 @@
     <script src="https://cdn.jsdelivr.net/npm/chart.js@2.8.0/dist/Chart.bundle.min.js"></script>
 </head>
 <body>
+  <div class="grid-range">
+      <label for="grid">Grid number</label>
+      <input onchange="changeGrid(event)" type="range" id="grid" value="500" min="0" max="1000">
+      <input onchange="changeGrid(event)" type="number" id="grid-num" value="500" min="0" max="1000">
+  </div>
   <canvas id="canvas"></canvas>
 <script type="text/javascript" src="code.js"></script>
 </body>

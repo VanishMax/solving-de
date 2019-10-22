@@ -5,3 +5,19 @@ canvas {
     -webkit-user-select: none;
     -ms-user-select: none;
 }
+
+.grid-range {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+#grid {
+    margin: auto 1em;
+}
+
+input[type=range]::-webkit-slider-runnable-track {
+    background: white;
+    border-radius: 6px;
+    box-sizing: border-box;
+}

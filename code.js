@@ -42,3 +42,8 @@ const changeInitial = (e, name) => {
   if (name === 'y') y0 = e.target.value;
   updateChart()
 };
+
+const changeVariant = e => {
+  variant = e.target.value;
+  updateChart();
+};

@@ -58,6 +58,11 @@ const options = {
   }
 };
 
+const variants = {
+  11: '(2*x+1)*(y/x) - (y*y)/x - x',
+  14: '(1 + y/x) * Math.log((x + y)/x) + y/x',
+};
+
 const randColor = () => {
   const MAX_COLOR_NUM = 255;
   const red = Math.floor(MAX_COLOR_NUM * Math.random());

@@ -1,7 +1,9 @@
 const MAX_X = 10;
 
+let variant = 11;
+
 const func = (x, y) => {
-  return (2*x+1)*(y/x) - (y*y)/x - x;
+  return eval(variants[variant]);
 };
 
 const euler = (x0, y0, h) => {

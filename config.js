@@ -1,5 +1,7 @@
 let canvas = document.getElementById('canvas');
 
+const methods = ['euler', 'improved-euler', 'runge-kutta'];
+
 const datasetConfig = (color) => ({
   fill: false,
   borderColor: color,
@@ -14,6 +16,9 @@ const options = {
   title: {
     display: false,
     text: ''
+  },
+  animation: {
+    duration: 0
   },
   tooltips: {
     mode: 'index',
@@ -42,4 +47,12 @@ const options = {
       }
     }]
   }
+};
+
+const randColor = () => {
+  const MAX_COLOR_NUM = 255;
+  const red = Math.floor(MAX_COLOR_NUM * Math.random());
+  const green = Math.floor(MAX_COLOR_NUM * Math.random());
+  const blue = Math.floor(MAX_COLOR_NUM * Math.random());
+  return `rgb(${red}, ${green}, ${blue})`;
 };

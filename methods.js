@@ -15,7 +15,22 @@ const euler = (x0, y0, n) => {
     y0 = y0 + h * func(x0, y0);
     x0 = x0 + h;
   }
-  console.log(points);
+  return points;
+};
+
+const improvedEuler = (x0, y0, n) => {
+  const h = MAX_X / n;
+  let points = [];
+  while (x0 <= MAX_X) {
+    let xNext = x0 + h;
+    let yNext = y0 + h * func(x0, y0);
+    points.push({
+      x: x0,
+      y: y0,
+    });
+    y0 = y0 + h/2 * (func(x0, y0) + func(xNext, yNext));
+    x0 = xNext;
+  }
   return points;
 };
 
@@ -24,7 +39,7 @@ const method = (name, x0, y0, n) => {
     case 'euler':
       return euler(x0, y0, n);
     case 'improved-euler':
-      break;
+      return improvedEuler(x0, y0, n);
     case 'runge-kutta':
       break;
     default:

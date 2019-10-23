@@ -1,4 +1,5 @@
 // import {options, datasetConfig, gridNum, canvas} from './config';
+// import {method} from './methods';
 
 let gridNum = 10;
 let x0 = 1;
@@ -21,9 +22,9 @@ const updateChart = () => {
   chart.data.datasets = [];
   for (mtd of methods) {
     chart.data.datasets.push({
-      label: mtd,
-      data: method(mtd, parseFloat(x0), parseFloat(y0), parseFloat(gridNum)),
-      ...datasetConfig(randColor()),
+      label: mtd.name,
+      data: method(mtd.name, parseFloat(x0), parseFloat(y0), parseFloat(gridNum)),
+      ...datasetConfig(mtd.color),
     })
   }
   chart.update();

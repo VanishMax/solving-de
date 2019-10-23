@@ -1,6 +1,15 @@
 let canvas = document.getElementById('canvas');
 
-const methods = ['euler', 'improved-euler', 'runge-kutta'];
+const methods = [{
+    name: 'euler',
+    color: 'rgb(255, 99, 132)',
+  }, {
+    name: 'improved-euler',
+    color: 'rgb(255, 205, 86)'
+  }, {
+    name: 'runge-kutta',
+    color: 'rgb(255, 159, 64)'
+  }];
 
 const datasetConfig = (color) => ({
   fill: false,

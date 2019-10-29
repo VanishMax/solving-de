@@ -1,7 +1,28 @@
-let variant = 11;
+let variant = 1;
 
 const func = (x, y) => {
   return eval(variants[variant].func);
+};
+
+const constant = (x, y) => {
+  return eval(variants[variant].const);
+};
+
+const exactFunc = (x, c) => {
+  return eval(variants[variant].exact);
+};
+
+const exact = (x0, y0, h) => {
+  let points = [];
+  const c = constant(x0, y0);
+  while (x0 <= variants[variant].n) {
+    points.push({
+      x: x0,
+      y: exactFunc(x0, c),
+    });
+    x0 = x0 + h;
+  }
+  return points;
 };
 
 const euler = (x0, y0, h) => {
@@ -58,6 +79,8 @@ const method = (name, x0, y0, n) => {
       return improvedEuler(x0, y0, h);
     case 'runge-kutta':
       return rungeKutta(x0, y0, h);
+    case 'exact':
+      return exact(x0, y0, h);
     default:
       break;
   }

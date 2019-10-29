@@ -9,8 +9,9 @@ let chart;
 window.onload = function() {
 
   // My default variant is 11
-  changeInitials(variants[11]);
-  document.getElementById('equation').innerHTML = variants[11].func;
+  changeInitials(variants[variant]);
+  document.getElementById('equation').innerHTML = variants[variant].func;
+  document.getElementById('variant').value = variant;
 
   chart = new Chart(canvas, {
     type: 'line',

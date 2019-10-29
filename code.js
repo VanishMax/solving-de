@@ -1,10 +1,6 @@
 // import {options, datasetConfig, gridNum, canvas} from './config';
 // import {method} from './methods';
 
-let gridNum = 50;
-let x0;
-let y0;
-
 let chart;
 window.onload = function() {
 
@@ -12,6 +8,8 @@ window.onload = function() {
   changeInitials(variants[variant]);
   document.getElementById('equation').innerHTML = variants[variant].func;
   document.getElementById('variant').value = variant;
+  document.querySelector('#grid').value = gridNum;
+  document.querySelector('#grid-num').value = gridNum;
 
   chart = new Chart(canvas, {
     type: 'line',

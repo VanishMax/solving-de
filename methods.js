@@ -1,5 +1,3 @@
-let variant = 1;
-
 const func = (x, y) => {
   return eval(variants[variant].func);
 };

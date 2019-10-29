@@ -1,5 +1,10 @@
 let canvas = document.getElementById('canvas');
 
+let variant = 1;
+let gridNum = 50;
+let x0;
+let y0;
+
 const methods = [{
     name: 'euler',
     color: 'rgb(255, 99, 132)',

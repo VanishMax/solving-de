@@ -1,14 +1,12 @@
-const MAX_X = 10;
-
 let variant = 11;
 
 const func = (x, y) => {
-  return eval(variants[variant]);
+  return eval(variants[variant].func);
 };
 
 const euler = (x0, y0, h) => {
   let points = [];
-  while (x0 <= MAX_X) {
+  while (x0 <= variants[variant].n) {
     points.push({
       x: x0,
       y: y0,
@@ -21,7 +19,7 @@ const euler = (x0, y0, h) => {
 
 const improvedEuler = (x0, y0, h) => {
   let points = [];
-  while (x0 <= MAX_X) {
+  while (x0 <= variants[variant].n) {
     let xNext = x0 + h;
     let yNext = y0 + h * func(x0, y0);
     points.push({
@@ -36,7 +34,7 @@ const improvedEuler = (x0, y0, h) => {
 
 const rungeKutta = (x0, y0, h) => {
   let points = [];
-  while (x0 <= MAX_X) {
+  while (x0 <= variants[variant].n) {
     let k1 = h * func(x0, y0);
     let k2 = h * func(x0 + 0.5 * h, y0 + 0.5 * k1);
     let k3 = h * func(x0 + 0.5 * h, y0 + 0.5 * k2);
@@ -52,7 +50,7 @@ const rungeKutta = (x0, y0, h) => {
 };
 
 const method = (name, x0, y0, n) => {
-  const h = MAX_X / n;
+  const h = variants[variant].n / n;
   switch (name) {
     case 'euler':
       return euler(x0, y0, h);

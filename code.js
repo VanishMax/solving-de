@@ -1,12 +1,17 @@
 // import {options, datasetConfig, gridNum, canvas} from './config';
 // import {method} from './methods';
 
-let gridNum = 10;
-let x0 = 1;
-let y0 = 1;
+let gridNum = 50;
+let x0;
+let y0;
 
 let chart;
 window.onload = function() {
+
+  // My default variant is 11
+  changeInitials(variants[11]);
+  document.getElementById('equation').innerHTML = variants[11].func;
+
   chart = new Chart(canvas, {
     type: 'line',
     label: 'Solution',
@@ -38,12 +43,23 @@ const changeGrid = e => {
 };
 
 const changeInitial = (e, name) => {
-  if (name === 'x') x0 = e.target.value;
-  if (name === 'y') y0 = e.target.value;
+  if (name === 'x') changeInitials({x: e.target.value, y: y0});
+  if (name === 'y') changeInitials({y: e.target.value, x: x0});
   updateChart()
+};
+
+const changeInitials = ({x, y}) => {
+  x0 = x;
+  y0 = y;
+  document.getElementById('x0').value = x;
+  document.getElementById('y0').value = y;
+  document.getElementById('x0_0').innerHTML = x;
+  document.getElementById('y0_0').innerHTML = y;
 };
 
 const changeVariant = e => {
   variant = e.target.value;
+  document.getElementById('equation').innerHTML = variants[variant].func;
+  changeInitials(variants[variant]);
   updateChart();
 };

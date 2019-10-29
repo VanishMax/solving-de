@@ -11,20 +11,20 @@
 <body>
     <h1>Solving Differential Equations</h1>
     <code class="mb">
-        Solve IVP: <b>(2x+1)y/x−y<sup>2</sup>/x − x</b> with y<sub>0</sub>=1, x<sub>0</sub>=1, X=10
+      Solve IVP: <span id="equation"></span> with y<sub>0</sub>=<span id="y0_0"></span>, x<sub>0</sub>=<span id="x0_0"></span>, X=10
     </code>
 
     <div class="flex flex-between">
         <div class="flex-center flex">
             <label for="x0">x<sub>0</sub> = </label>
-            <input oninput="changeInitial(event, 'x')" type="number" id="x0" value="1" class="w-2">
+            <input oninput="changeInitial(event, 'x')" type="number" id="x0" class="w-2">
             <label for="y0">y<sub>0</sub> = </label>
-            <input oninput="changeInitial(event, 'y')" type="number" id="y0" value="1" class="w-2">
+            <input oninput="changeInitial(event, 'y')" type="number" id="y0" class="w-2">
         </div>
         <div class="flex-center flex">
             <label for="grid">Grid number</label>
-            <input oninput="changeGrid(event)" type="range" id="grid" value="10" min="2" max="100">
-            <input oninput="changeGrid(event)" type="number" id="grid-num" value="10" min="0" max="1000">
+            <input oninput="changeGrid(event)" type="range" id="grid" value="50" min="2" max="100">
+            <input oninput="changeGrid(event)" type="number" id="grid-num" value="50" min="0" max="1000">
         </div>
       <div class="flex-center flex">
         <label for="variant" class="mr">Variant</label>

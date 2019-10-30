@@ -1,6 +1,7 @@
-let canvas = document.getElementById('canvas');
+let methodsCanvas = document.getElementById('methods');
+let localCanvas = document.getElementById('local-error');
 
-let variant = 11;
+let variant = 3;
 let gridNum = 50;
 let x0;
 let y0;
@@ -17,7 +18,8 @@ const methods = [{
   }, {
     name: 'exact',
     color: 'rgb(255, 50, 300)'
-  }];
+  }
+];
 
 const datasetConfig = (color) => ({
   fill: false,
@@ -75,7 +77,7 @@ const variants = {
     y: 2,
     n: 10,
   },
-  // TODO: check 2nd for mathods
+  // TODO: check 2nd for methods
   2: {
     func: 'y/x - x * Math.exp(y/x)',
     exact: '-1*x*Math.log(c+x)',

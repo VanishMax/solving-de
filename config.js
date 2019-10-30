@@ -1,7 +1,7 @@
 let methodsCanvas = document.getElementById('methods');
 let localCanvas = document.getElementById('local-error');
 
-let variant = 11;
+let variant = 3;
 let gridNum = 50;
 let x0;
 let y0;

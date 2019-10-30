@@ -33,33 +33,31 @@ window.onload = function() {
 };
 
 const updateMethods = () => {
-  methodsChart.data.datasets = [];
-  for (mtd of methods) {
-    methodsChart.data.datasets.push({
-      label: mtd.name,
-      data: method(mtd.name, parseFloat(x0), parseFloat(y0), parseFloat(gridNum)),
-      ...datasetConfig(mtd.color),
-    })
-  }
+  methodsChart.data.datasets = getData('methods', parseFloat(x0), parseFloat(y0), parseFloat(gridNum));
   methodsChart.update();
 };
 
 const updateErrors = () => {
-  localChart.data.datasets = [];
+  localChart.data.datasets = getData('local', parseFloat(x0), parseFloat(y0), parseFloat(gridNum));
   localChart.update();
+};
+
+const updateAll = () => {
+  updateMethods();
+  updateErrors();
 };
 
 const changeGrid = e => {
   document.querySelector('#grid').value = e.target.value;
   document.querySelector('#grid-num').value = e.target.value;
   gridNum = e.target.value;
-  updateMethods()
+  updateAll()
 };
 
 const changeInitial = (e, name) => {
   if (name === 'x') changeInitials({x: e.target.value, y: y0});
   if (name === 'y') changeInitials({y: e.target.value, x: x0});
-  updateMethods()
+  updateAll()
 };
 
 const changeInitials = ({x, y}) => {
@@ -75,5 +73,5 @@ const changeVariant = e => {
   variant = e.target.value;
   document.getElementById('equation').innerHTML = variants[variant].func;
   changeInitials(variants[variant]);
-  updateMethods();
+  updateAll();
 };

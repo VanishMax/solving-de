@@ -1,7 +1,9 @@
 // import {options, datasetConfig, gridNum, canvas} from './config';
 // import {method} from './methods';
 
-let chart;
+let methodsChart;
+let localChart;
+
 window.onload = function() {
 
   // My default variant is 11
@@ -11,40 +13,53 @@ window.onload = function() {
   document.querySelector('#grid').value = gridNum;
   document.querySelector('#grid-num').value = gridNum;
 
-  chart = new Chart(canvas, {
+  methodsChart = new Chart(methodsCanvas, {
     type: 'line',
-    label: 'Solution',
     data: {
       datasets: []
     },
     options: options
   });
-  updateChart();
+  updateMethods();
+
+  localChart = new Chart(localCanvas, {
+    type: 'line',
+    data: {
+      datasets: []
+    },
+    options: options
+  });
+  updateErrors();
 };
 
-const updateChart = () => {
-  chart.data.datasets = [];
+const updateMethods = () => {
+  methodsChart.data.datasets = [];
   for (mtd of methods) {
-    chart.data.datasets.push({
+    methodsChart.data.datasets.push({
       label: mtd.name,
       data: method(mtd.name, parseFloat(x0), parseFloat(y0), parseFloat(gridNum)),
       ...datasetConfig(mtd.color),
     })
   }
-  chart.update();
+  methodsChart.update();
+};
+
+const updateErrors = () => {
+  localChart.data.datasets = [];
+  localChart.update();
 };
 
 const changeGrid = e => {
   document.querySelector('#grid').value = e.target.value;
   document.querySelector('#grid-num').value = e.target.value;
   gridNum = e.target.value;
-  updateChart()
+  updateMethods()
 };
 
 const changeInitial = (e, name) => {
   if (name === 'x') changeInitials({x: e.target.value, y: y0});
   if (name === 'y') changeInitials({y: e.target.value, x: x0});
-  updateChart()
+  updateMethods()
 };
 
 const changeInitials = ({x, y}) => {
@@ -60,5 +75,5 @@ const changeVariant = e => {
   variant = e.target.value;
   document.getElementById('equation').innerHTML = variants[variant].func;
   changeInitials(variants[variant]);
-  updateChart();
+  updateMethods();
 };

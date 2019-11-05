@@ -1,7 +1,7 @@
 let methodsCanvas = document.getElementById('methods');
 let localCanvas = document.getElementById('local-error');
 
-let variant = 3;
+let variant = 11;
 let gridNum = 50;
 let x0;
 let y0;
@@ -152,12 +152,12 @@ const variants = {
     n: 5,
   },
   11: {
-    func: '(2*x+1)*(y/x) - (y*y)/x - x',
-    exact: '(-x*c + x*x + x) / (x - c)',
-    const: '(x*x + x - x*y) / (x - y)',
-    x: 1,
-    y: 1,
-    n: 9,
+    func: 'x*y - x*Math.pow(y, 3)',
+    exact: 'Math.exp(1/2 * x*x) / Math.sqrt(c + Math.exp(x*x))',
+    const: 'Math.exp(1/4 * Math.pow(x, 4)) / Math.pow(y, 2) - Math.exp(x*x)',
+    x: 0,
+    y: Math.sqrt(1/2),
+    n: 3,
   },
   12: {
     func: '5 - x*x - y*y +2 * x * y',

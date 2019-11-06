@@ -44,3 +44,18 @@ input[type=range]::-webkit-slider-runnable-track {
     border-radius: 6px;
     box-sizing: border-box;
 }
+
+#tabs {
+  display: flex;
+  justify-content: space-between;
+}
+
+#tabs > .tab:not(.active) {
+  cursor: pointer;
+  color: lightgray;
+  transition: color .2s;
+}
+
+canvas:not(.active) {
+  display: none !important;
+}

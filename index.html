@@ -17,18 +17,18 @@
     <div class="flex flex-between">
         <div class="flex-center flex">
             <label for="x0">x<sub>0</sub> = </label>
-            <input oninput="changeInitial(event, 'x')" type="number" id="x0" class="w-2">
+            <input type="number" id="x0" class="w-2">
             <label for="y0">y<sub>0</sub> = </label>
-            <input oninput="changeInitial(event, 'y')" type="number" id="y0" class="w-2">
+            <input type="number" id="y0" class="w-2">
         </div>
         <div class="flex-center flex">
             <label for="grid">Grid number</label>
-            <input oninput="changeGrid(event)" type="range" id="grid" min="2" max="100">
-            <input oninput="changeGrid(event)" type="number" id="grid-num" min="0" max="1000">
+            <input type="range" id="grid" min="2" max="100">
+            <input type="number" id="grid-num" min="0" max="1000">
         </div>
       <div class="flex-center flex">
         <label for="variant" class="mr">Variant</label>
-        <select onchange="changeVariant(event)" id="variant">
+        <select id="variant">
           <option value="1">1</option>
           <option value="2">2</option>
           <option value="3">3</option>

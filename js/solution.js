@@ -1,4 +1,4 @@
-import {datasetConfig, methods, options} from '../code/config';
+import {datasetConfig, methods, options} from './config';
 
 export default class SolutionChart {
   constructor(id, variant) {

@@ -1,3 +1,5 @@
+import {variants, variant} from './config';
+
 const func = (x, y) => {
   return eval(variants[variant].func);
 };
@@ -68,7 +70,7 @@ const rungeKutta = (x0, y0, h) => {
   return points;
 };
 
-const method = (name, x0, y0, n) => {
+export const method = (name, x0, y0, n) => {
   const h = variants[variant].n / n;
   switch (name) {
     case 'euler':

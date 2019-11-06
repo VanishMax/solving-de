@@ -1,3 +1,6 @@
+import {variants, variant, methods, datasetConfig, gridNum} from './config';
+import {method} from './methods';
+
 let previousState = {};
 
 const localError = (name) => {
@@ -11,7 +14,7 @@ const localError = (name) => {
   });
 };
 
-const getData = (graph, x0, y0, n) => {
+export const getData = (graph, x0, y0, n) => {
   const h = variants[variant].n / n;
   let data;
   switch (graph) {
@@ -19,6 +22,7 @@ const getData = (graph, x0, y0, n) => {
     case 'methods':
       data = [];
       for (mtd of methods) {
+        console.log(mtd);
         let tmp = method(mtd.name, parseFloat(x0), parseFloat(y0), parseFloat(gridNum));
         previousState[mtd.name] = tmp;
         data.push({
@@ -42,8 +46,8 @@ const getData = (graph, x0, y0, n) => {
       }
       return data;
 
-    case 'global':
-      return euler(x0, y0, h);
+    // case 'global':
+    //   return euler(x0, y0, h);
 
     default:
       break;

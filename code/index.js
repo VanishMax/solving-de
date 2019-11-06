@@ -1,4 +1,5 @@
 import {options, variants, variant, localCanvas, methodsCanvas, gridNum, methods} from './config';
+import {getData} from './calc';
 // import {method} from './methods';
 
 let methodsChart;
@@ -9,7 +10,6 @@ let y0 = variants[variant].y;
 
 window.onload = function() {
 
-  console.log(variant, gridNum);
   // My default variant is 11
   changeInitials(variants[variant]);
   document.getElementById('equation').innerHTML = variants[variant].func;

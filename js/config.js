@@ -1,27 +1,22 @@
-let methodsCanvas = document.getElementById('methods');
-let localCanvas = document.getElementById('local-error');
+export let methodsCanvas = 'methods';
+export let localCanvas = 'local-error';
 
-let variant = 11;
-let gridNum = 50;
-let x0;
-let y0;
-
-const methods = [{
-    name: 'euler',
-    color: 'rgb(255, 99, 132)',
-  }, {
-    name: 'improved-euler',
-    color: 'rgb(255, 205, 86)'
-  }, {
-    name: 'runge-kutta',
-    color: 'rgb(255, 159, 64)'
-  }, {
-    name: 'exact',
-    color: 'rgb(255, 50, 300)'
-  }
+export const methods = [{
+  name: 'euler',
+  color: 'rgb(255, 99, 132)',
+}, {
+  name: 'improved-euler',
+  color: 'rgb(255, 205, 86)'
+}, {
+  name: 'runge-kutta',
+  color: 'rgb(255, 159, 64)'
+}, {
+  name: 'exact',
+  color: 'rgb(255, 50, 300)'
+}
 ];
 
-const datasetConfig = (color) => ({
+export const datasetConfig = (color) => ({
   fill: false,
   borderColor: color,
   backgroundColor: color,
@@ -30,7 +25,7 @@ const datasetConfig = (color) => ({
   borderWidth: 1
 });
 
-const options = {
+export const options = {
   responsive: true,
   title: {
     display: false,
@@ -68,7 +63,7 @@ const options = {
   }
 };
 
-const variants = {
+export const variants = {
   1: {
     func: '1 + 2*(y/x)',
     exact: 'c*x*x - x',
@@ -152,12 +147,12 @@ const variants = {
     n: 5,
   },
   11: {
-    func: 'x*y - x*Math.pow(y, 3)',
-    exact: 'Math.exp(1/2 * x*x) / Math.sqrt(c + Math.exp(x*x))',
-    const: 'Math.exp(1/4 * Math.pow(x, 4)) / Math.pow(y, 2) - Math.exp(x*x)',
-    x: 0,
-    y: Math.sqrt(1/2),
-    n: 3,
+    func: '(2*x+1)*(y/x) - (y*y)/x - x',
+    exact: '(-x*c + x*x + x) / (x - c)',
+    const: '(x*x + x - x*y) / (x - y)',
+    x: 1,
+    y: 1,
+    n: 9,
   },
   12: {
     func: '5 - x*x - y*y +2 * x * y',

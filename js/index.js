@@ -19,6 +19,10 @@ window.onload = function() {
   document.getElementById('grid').addEventListener('input', changeGrid);
   document.getElementById('grid-num').addEventListener('input', changeGrid);
   document.getElementById('variant').addEventListener('change', changeVariant);
+
+  document.querySelectorAll('.tab').forEach(el => {
+    el.addEventListener('click', changeTab);
+  })
 };
 
 const updateAll = () => {
@@ -42,3 +46,21 @@ const changeVariant = e => {
   updateAll();
 };
 
+const changeTab = e => {
+  document.querySelectorAll('.tab').forEach(el => {
+    if (el.classList.contains('active')) {
+      el.classList.toggle('active');
+    }
+  });
+
+  let activeTab = e.target.getAttribute('data-tab');
+  e.target.classList.toggle('active');
+
+  document.querySelectorAll('canvas').forEach(el => {
+    if (el.getAttribute('data-tab') === activeTab) {
+      el.classList.add('active');
+    } else {
+      el.classList.remove('active');
+    }
+  });
+};

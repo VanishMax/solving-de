@@ -58,11 +58,15 @@
       </div>
     </div>
 
-    <h2>Solution graphs</h2>
-    <canvas id="methods"></canvas>
+    <nav id="tabs">
+      <h2 class="tab active" data-tab="1">Solution graphs</h2>
+      <h2 class="tab" data-tab="2">Local Error</h2>
+      <h2 class="tab" data-tab="3">Global Error</h2>
+    </nav>
 
-    <h2>Local error graphs</h2>
-    <canvas id="local-error"></canvas>
+    <canvas id="methods" data-tab="1" class="active"></canvas>
+    <canvas id="local-error" data-tab="2"></canvas>
+    <canvas id="global-error" data-tab="3"></canvas>
 
     <script src="dist/bundle.js"></script>
 </body>

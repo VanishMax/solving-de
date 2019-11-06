@@ -107,7 +107,6 @@ export default class SolutionChart {
   constant(x, y) {
     return eval(this.variant.const);
   };
-
   exactFunc(x, c) {
     return eval(this.variant.exact);
   };
@@ -123,8 +122,9 @@ export default class SolutionChart {
         ...datasetConfig(mtd.color),
       })
     }
-    this.chart.data.datasets = data;
 
+    this.data = data;
+    this.chart.data.datasets = data;
     this.chart.update();
   }
 }

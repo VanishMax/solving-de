@@ -1,8 +1,9 @@
-import {methodsCanvas} from './config';
+import {methodsCanvas, localCanvas} from './config';
 import SolutionChart from './solution';
 import Variant from './variant';
+import LocalErrorChart from './local-error';
 
-let variant, solution;
+let variant, solution, localError;
 
 window.onload = function() {
 
@@ -10,6 +11,7 @@ window.onload = function() {
   // of graphs to be built from the variant
   variant = new Variant(11);
   solution = new SolutionChart(methodsCanvas, variant);
+  localError = new LocalErrorChart(localCanvas, variant, solution);
 
   // Listen for all event of changing variant, grid size or initial values
   document.getElementById('x0').addEventListener('input', (e) => changeInitial(e, 'x'));
@@ -20,7 +22,8 @@ window.onload = function() {
 };
 
 const updateAll = () => {
-  solution.update(variant);
+  solution.update();
+  localError.update();
 };
 
 const changeGrid = e => {

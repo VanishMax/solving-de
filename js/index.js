@@ -31,6 +31,7 @@ window.onload = function() {
 const updateAll = () => {
   solution.update();
   localError.update();
+  globalError.update();
 };
 
 const changeGrid = e => {

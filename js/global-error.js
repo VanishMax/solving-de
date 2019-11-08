@@ -15,7 +15,23 @@ export default class GlobalErrorChart {
   }
 
   update() {
+    let initial = {};
+    for (let mtd of methods) initial[mtd.name] = [];
+    for (let n = 2; n <= this.variant.grid; n++) {
+      initial = this.solution.globalError(initial, n);
+    }
+
     let data = [];
+    for (let mtd of methods) {
+      if (mtd.name !== 'exact') {
+        data.push({
+          label: mtd.name,
+          data: initial[mtd.name],
+          ...datasetConfig(mtd.color),
+        });
+      }
+    }
+
     this.chart.data.datasets = data;
     this.chart.update();
   }

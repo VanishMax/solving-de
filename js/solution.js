@@ -13,24 +13,23 @@ export default class SolutionChart {
     this.update();
   }
 
-  method(name) {
-    let {x0, y0, grid, n} = this.variant;
+  method(name, isLast = false) {
     // TODO: check if I need to change the line to (n - x0) / grid
     switch (name) {
       case 'euler':
-        return this.euler();
+        return this.euler(isLast);
       case 'improved-euler':
-        return this.improvedEuler();
+        return this.improvedEuler(isLast);
       case 'runge-kutta':
-        return this.rungeKutta();
+        return this.rungeKutta(isLast);
       case 'exact':
-        return this.exact();
+        return this.exact(isLast);
       default:
         break;
     }
   }
 
-  exact() {
+  exact(isLast) {
     let {x0, y0, n} = this.variant;
     let {h} = this;
 
@@ -43,10 +42,10 @@ export default class SolutionChart {
       });
       x0 = x0 + h;
     }
-    return points;
+    return isLast ? points[points.length - 1] : points;
   };
 
-  euler() {
+  euler(isLast) {
     let {x0, y0, n} = this.variant;
     let {h} = this;
 
@@ -59,10 +58,10 @@ export default class SolutionChart {
       y0 = y0 + h * this.func(x0, y0);
       x0 = x0 + h;
     }
-    return points;
+    return isLast ? points[points.length - 1] : points;
   }
 
-  improvedEuler() {
+  improvedEuler(isLast) {
     let {x0, y0, n} = this.variant;
     let {h} = this;
 
@@ -77,10 +76,10 @@ export default class SolutionChart {
       y0 = y0 + h/2 * (this.func(x0, y0) + this.func(xNext, yNext));
       x0 = xNext;
     }
-    return points;
+    return isLast ? points[points.length - 1] : points;
   };
 
-  rungeKutta() {
+  rungeKutta(isLast) {
     let {x0, y0, n} = this.variant;
     let {h} = this;
 
@@ -97,7 +96,7 @@ export default class SolutionChart {
       y0 = y0 + 1/6 * (k1 + 2*k2 + 2*k3 + k4);
       x0 = x0 + h;
     }
-    return points;
+    return isLast ? points[points.length - 1] : points;
   };
 
 
@@ -128,7 +127,20 @@ export default class SolutionChart {
     this.chart.update();
   }
 
-  // globalError() {
-  //
-  // }
+  globalError(initial = {}, N) {
+    this.h = this.variant.n / N;
+
+    let exact = this.method('exact', true);
+    for (let mtd of methods) {
+      if (mtd.name !== 'exact') {
+        initial[mtd.name].push({
+          x: N,
+          y: exact.y - this.method(mtd.name, true).y
+        });
+      }
+    }
+
+    this.h = this.variant.n / this.variant.grid;
+    return initial;
+  }
 }

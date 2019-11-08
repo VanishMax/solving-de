@@ -1,5 +1,6 @@
 export let methodsCanvas = 'methods';
 export let localCanvas = 'local-error';
+export let globalCanvas = 'global-error';
 
 export let LOOP_ROUNDING = 0.005;
 
@@ -27,7 +28,7 @@ export const datasetConfig = (color) => ({
   borderWidth: 1
 });
 
-export const options = {
+export const options = (x, y) => ({
   responsive: true,
   title: {
     display: false,
@@ -51,7 +52,7 @@ export const options = {
       ticks: { beginAtZero: true },
       scaleLabel: {
         display: true,
-        labelString: 'X'
+        labelString: x || 'X'
       }
     }],
     yAxes: [{
@@ -59,11 +60,11 @@ export const options = {
       ticks: { beginAtZero: true },
       scaleLabel: {
         display: true,
-        labelString: 'Y'
+        labelString: y || 'Y'
       }
     }]
   }
-};
+});
 
 export const variants = {
   1: {

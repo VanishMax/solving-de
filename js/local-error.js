@@ -9,7 +9,7 @@ export default class LocalErrorChart {
       data: {
         datasets: []
       },
-      options: options
+      options: options('X', 'Difference')
     });
     this.update();
   }

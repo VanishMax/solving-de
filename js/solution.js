@@ -8,7 +8,7 @@ export default class SolutionChart {
       data: {
         datasets: []
       },
-      options: options
+      options: options()
     });
     this.update();
   }

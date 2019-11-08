@@ -1,4 +1,4 @@
-import {datasetConfig, methods, options} from './config';
+import {datasetConfig, methods, options, LOOP_ROUNDING} from './config';
 
 export default class SolutionChart {
   constructor(id, variant) {
@@ -36,10 +36,10 @@ export default class SolutionChart {
 
     let points = [];
     const c = this.constant(x0, y0);
-    while (x0 <= n) {
+    while (x0 <= n + LOOP_ROUNDING) {
       points.push({
-        x: x0,
-        y: this.exactFunc(x0, c),
+        x: x0.toFixed(4),
+        y: this.exactFunc(x0, c).toFixed(4),
       });
       x0 = x0 + h;
     }
@@ -51,10 +51,10 @@ export default class SolutionChart {
     let {h} = this;
 
     let points = [];
-    while (x0 <= n) {
+    while (x0 <= n + LOOP_ROUNDING) {
       points.push({
-        x: x0,
-        y: y0,
+        x: x0.toFixed(4),
+        y: y0.toFixed(4),
       });
       y0 = y0 + h * this.func(x0, y0);
       x0 = x0 + h;
@@ -67,12 +67,12 @@ export default class SolutionChart {
     let {h} = this;
 
     let points = [];
-    while (x0 <= n) {
+    while (x0 <= n + LOOP_ROUNDING) {
       let xNext = x0 + h;
       let yNext = y0 + h * this.func(x0, y0);
       points.push({
-        x: x0,
-        y: y0,
+        x: x0.toFixed(4),
+        y: y0.toFixed(4),
       });
       y0 = y0 + h/2 * (this.func(x0, y0) + this.func(xNext, yNext));
       x0 = xNext;
@@ -85,14 +85,14 @@ export default class SolutionChart {
     let {h} = this;
 
     let points = [];
-    while (x0 <= n) {
+    while (x0 <= n + LOOP_ROUNDING) {
       let k1 = h * this.func(x0, y0);
       let k2 = h * this.func(x0 + 0.5 * h, y0 + 0.5 * k1);
       let k3 = h * this.func(x0 + 0.5 * h, y0 + 0.5 * k2);
       let k4 = h * this.func(x0 + h, y0 + k3);
       points.push({
-        x: x0,
-        y: y0,
+        x: x0.toFixed(4),
+        y: y0.toFixed(4),
       });
       y0 = y0 + 1/6 * (k1 + 2*k2 + 2*k3 + k4);
       x0 = x0 + h;
@@ -127,4 +127,8 @@ export default class SolutionChart {
     this.chart.data.datasets = data;
     this.chart.update();
   }
+
+  // globalError() {
+  //
+  // }
 }

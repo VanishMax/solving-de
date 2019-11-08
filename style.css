@@ -1,9 +1,9 @@
 canvas {
-    width: 100%;
-    height: 600px;
-    -moz-user-select: none;
-    -webkit-user-select: none;
-    -ms-user-select: none;
+  margin-top: 2em;
+  width: 100%;
+  -moz-user-select: none;
+  -webkit-user-select: none;
+  -ms-user-select: none;
 }
 
 code {
@@ -50,7 +50,12 @@ input[type=range]::-webkit-slider-runnable-track {
   justify-content: space-between;
 }
 
+#tabs > .tab {
+  text-decoration: underline;
+}
+
 #tabs > .tab:not(.active) {
+  text-decoration: none;
   cursor: pointer;
   color: lightgray;
   transition: color .2s;

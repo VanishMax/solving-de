@@ -1,6 +1,8 @@
 export let methodsCanvas = 'methods';
 export let localCanvas = 'local-error';
 
+export let LOOP_ROUNDING = 0.005;
+
 export const methods = [{
   name: 'euler',
   color: 'rgb(255, 99, 132)',

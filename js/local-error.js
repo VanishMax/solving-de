@@ -1,8 +1,7 @@
 import {datasetConfig, methods, options} from './config';
 
 export default class LocalErrorChart {
-  constructor(id, variant, solution) {
-    this.variant = variant;
+  constructor(id, solution) {
     this.solution = solution;
     this.chart = new Chart(document.getElementById(id), {
       type: 'line',

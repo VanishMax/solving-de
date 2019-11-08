@@ -1,3 +1,12 @@
+body {
+  opacity: 0;
+}
+
+body.active {
+  opacity: 1;
+  transition: .5s;
+}
+
 canvas {
   margin-top: 2em;
   width: 100%;

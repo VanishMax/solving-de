@@ -3,20 +3,30 @@ export default class Document {
     // Create the instance of the variant and the instances
     // of graphs to be built from the variant
     this.variant = variant;
-    console.log(variant, this.variant);
     this.solution = solution;
     this.localError = local;
     this.globalError = global;
+    this.activeTab = 1;
+    this.updateAll();
   }
 
   updateAll() {
-    this.solution.update();
-    this.localError.update();
-    this.globalError.update();
+    switch (parseInt(this.activeTab)) {
+      case 1:
+        this.solution.update();
+        break;
+      case 2:
+        this.localError.update();
+        break;
+      case 3:
+        this.globalError.update();
+        break;
+      default:
+        break;
+    }
   };
 
   changeGrid(e) {
-    console.log(this);
     this.variant.changeGrid(e.target.value);
     this.updateAll()
   };
@@ -33,22 +43,26 @@ export default class Document {
   };
 
   changeTab(e) {
-    document.querySelectorAll('.tab').forEach(el => {
-      if (el.classList.contains('active')) {
-        el.classList.toggle('active');
-      }
-    });
+    if (e.type === 'mouseup') {
+      this.updateAll();
+    } else if (e.type === 'click') {
+      document.querySelectorAll('canvas').forEach(el => {
+        if (el.getAttribute('data-tab') === this.activeTab) {
+          el.classList.add('active');
+        } else {
+          el.classList.remove('active');
+        }
+      });
+    } else {
+      document.querySelectorAll('.tab').forEach(el => {
+        if (el.classList.contains('active')) {
+          el.classList.toggle('active');
+        }
+      });
 
-    let activeTab = e.target.getAttribute('data-tab');
-    e.target.classList.toggle('active');
-
-    document.querySelectorAll('canvas').forEach(el => {
-      if (el.getAttribute('data-tab') === activeTab) {
-        el.classList.add('active');
-      } else {
-        el.classList.remove('active');
-      }
-    });
+      this.activeTab = e.target.getAttribute('data-tab');
+      e.target.classList.toggle('active');
+    }
   };
 
 }

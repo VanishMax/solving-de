@@ -13,6 +13,8 @@ window.onload = function () {
   let globalError = new GlobalErrorChart(globalCanvas, variant, solution);
   let doc = new Document(variant, solution, localError, globalError);
 
+  document.querySelector('body').classList.add('active');
+
   // Listen for all event of changing variant, grid size or initial values
   document.getElementById('x0').addEventListener('input', (e) => doc.changeInitial(e, 'x'));
   document.getElementById('y0').addEventListener('input', (e) => doc.changeInitial(e, 'y'));
@@ -22,6 +24,8 @@ window.onload = function () {
 
   // Change display of charts
   document.querySelectorAll('.tab').forEach(el => {
+    el.addEventListener('mousedown', (e) => doc.changeTab(e));
+    el.addEventListener('mouseup', (e) => doc.changeTab(e));
     el.addEventListener('click', (e) => doc.changeTab(e));
   })
 };

@@ -10,7 +10,6 @@ export default class SolutionChart {
       },
       options: options()
     });
-    this.update();
   }
 
   method(name, isLast = false) {

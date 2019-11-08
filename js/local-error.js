@@ -10,7 +10,6 @@ export default class LocalErrorChart {
       },
       options: options('X', 'Difference')
     });
-    this.update();
   }
 
   local(name) {

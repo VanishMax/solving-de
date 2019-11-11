@@ -14,7 +14,6 @@ export default class GlobalErrorChart {
   }
 
   update() {
-    console.log('updating');
     let initial = {};
     for (let mtd of methods) initial[mtd.name] = [];
     for (let n = 2; n <= this.variant.grid; n++) {

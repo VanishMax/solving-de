@@ -2,6 +2,7 @@ export let methodsCanvas = 'methods';
 export let localCanvas = 'local-error';
 export let globalCanvas = 'global-error';
 
+export let MY_VARIANT = 11;
 export let LOOP_ROUNDING = 0.005;
 
 export const methods = [{

@@ -13,7 +13,6 @@ export default class SolutionChart {
   }
 
   method(name, isLast = false) {
-    // TODO: check if I need to change the line to (n - x0) / grid
     switch (name) {
       case 'euler':
         return this.euler(isLast);
@@ -49,7 +48,7 @@ export default class SolutionChart {
     let {h} = this;
 
     let points = [];
-    while (x0 <= n + LOOP_ROUNDING) {
+    while (x0 - n <= LOOP_ROUNDING) {
       points.push({
         x: x0.toFixed(4),
         y: y0.toFixed(4),
@@ -65,7 +64,7 @@ export default class SolutionChart {
     let {h} = this;
 
     let points = [];
-    while (x0 <= n + LOOP_ROUNDING) {
+    while (x0 - n <= LOOP_ROUNDING) {
       let xNext = x0 + h;
       let yNext = y0 + h * this.func(x0, y0);
       points.push({
@@ -83,7 +82,7 @@ export default class SolutionChart {
     let {h} = this;
 
     let points = [];
-    while (x0 <= n + LOOP_ROUNDING) {
+    while (x0 - n <= LOOP_ROUNDING) {
       let k1 = h * this.func(x0, y0);
       let k2 = h * this.func(x0 + 0.5 * h, y0 + 0.5 * k1);
       let k3 = h * this.func(x0 + 0.5 * h, y0 + 0.5 * k2);

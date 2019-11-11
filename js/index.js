@@ -1,4 +1,4 @@
-import {methodsCanvas, localCanvas, globalCanvas} from './config';
+import {methodsCanvas, localCanvas, globalCanvas, MY_VARIANT} from './config';
 import Document from './document';
 import Variant from './variant';
 import SolutionChart from './solution';
@@ -7,7 +7,7 @@ import GlobalErrorChart from './global-error';
 
 window.onload = function () {
 
-  let variant = new Variant(11);
+  let variant = new Variant(MY_VARIANT);
   let solution = new SolutionChart(methodsCanvas, variant);
   let localError = new LocalErrorChart(localCanvas, solution);
   let globalError = new GlobalErrorChart(globalCanvas, variant, solution);

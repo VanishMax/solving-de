@@ -7,7 +7,6 @@ export default class Variant {
   }
 
   changeVar(id) {
-    this.index = id;
     this.func = variants[id].func;
     this.exact = variants[id].exact;
     this.const = variants[id].const;

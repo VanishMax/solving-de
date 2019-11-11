@@ -10,3 +10,6 @@ Also, there are graphs of local and total approximation error for this solution 
 
 ### Demo 
 Demo of this assignment is [available here](https://vanishmax.github.io/solving-de/)
+
+### Report
+Report with all explanations of this assignment can be viewed as a [.docx](https://github.com/VanishMax/solving-de/blob/master/report/report.docx) or a [pdf](https://github.com/VanishMax/solving-de/blob/master/report/report.pdf) file

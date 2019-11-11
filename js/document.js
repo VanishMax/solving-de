@@ -11,18 +11,22 @@ export default class Document {
   }
 
   updateAll() {
-    switch (parseInt(this.activeTab)) {
-      case 1:
-        this.solution.update();
-        break;
-      case 2:
-        this.localError.update();
-        break;
-      case 3:
-        this.globalError.update();
-        break;
-      default:
-        break;
+    try {
+      switch (parseInt(this.activeTab)) {
+        case 1:
+          this.solution.update();
+          break;
+        case 2:
+          this.localError.update();
+          break;
+        case 3:
+          this.globalError.update();
+          break;
+        default:
+          break;
+      }
+    } catch (e) {
+      alert('Wrong data');
     }
   };
 
@@ -32,8 +36,8 @@ export default class Document {
   };
 
   changeInitial(e, name) {
-    if (name === 'x') this.variant.changeInitials({x: e.target.value, y: this.variant.y0});
-    if (name === 'y') this.variant.changeInitials({y: e.target.value, x: this.variant.x0});
+    if (name === 'x') this.variant.changeInitials({x: parseFloat(e.target.value), y: this.variant.y0});
+    if (name === 'y') this.variant.changeInitials({y: parseFloat(e.target.value), x: this.variant.x0});
     this.updateAll()
   };
 

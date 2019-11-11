@@ -19,7 +19,7 @@ export default class LocalErrorChart {
     return equation.data.map((point, i) => {
       return {
         x: point.x,
-        y: exact.data[i].y - point.y,
+        y: Math.abs(exact.data[i].y - point.y),
       };
     });
   }

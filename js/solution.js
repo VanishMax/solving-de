@@ -133,7 +133,7 @@ export default class SolutionChart {
       if (mtd.name !== 'exact') {
         initial[mtd.name].push({
           x: N,
-          y: exact.y - this.method(mtd.name, true).y
+          y: Math.abs(exact.y - this.method(mtd.name, true).y)
         });
       }
     }
